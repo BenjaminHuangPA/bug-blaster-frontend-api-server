@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bug-blaster-frontend-api-server
+  labels:
+    app: bug-blaster-frontend-api-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bug-blaster-frontend-api-server
+  template:
+    metadata:
+      labels:
+        app: bug-blaster-frontend-api-server
+    spec:
+      serviceAccountName: admin
+      containers:        
+        - name: bug-blaster-frontend-api-server
+          image: huan1398/bug-blaster-frontend-api-server:latest
+          ports:
+          - containerPort: 3050
